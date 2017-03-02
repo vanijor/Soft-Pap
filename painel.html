@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel de Controle</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="css/estilo.css" rel="stylesheet">
+      <link href="css/painel.css" rel="stylesheet">
+      
+  </head>
+    
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Ecantos Papelaria</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><i class="fa fa-area-chart fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-birthday-cake fa-2x"></i></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-2x"></i><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Minha Conta</a></li>
+                <li><a href="#">Trocar de Senha</a></li>
+                <li><a href="#">Efetuar Logoff</a></li>
+              </ul>
+            </li>
+          </ul>          
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+      
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-sm-3">
+                <!-- inicio menu navegação lateral -->
+                <div class="panel panel-primary">
+                    <div id="colGroup1" role="tab" class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#colListGroup1" aria-controls="colListGroup1" aria-expanded="false" data-toggle="collapse">
+                                <span class="glyphicon glyphicon-file"></span>
+                                Gerenciar Posts
+                            </a>
+                        </h4>
+                    </div>
+                    <div role="tabpanel" class="panel-collapse collapse" id="colListGroup1" aria-expanded="false">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="#">Criar novo POST</a></li>
+                            <li class="list-group-item"><a href="#">Alterar POST</a></li>
+                            <li class="list-group-item"><a href="#">Excluir POST</a></li>
+                        </ul>
+                        <div class="panel-footer"></div>
+                    </div>
+                </div>
+                <!-- //menu navegação lateral -->
+                <!-- inicio menu navegação lateral -->
+                <div class="panel panel-primary">
+                    <div id="colGroup1" role="tab" class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#colListGroup2" aria-controls="colListGroup2" aria-expanded="false" data-toggle="collapse">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Gerenciar Usuário
+                            </a>
+                        </h4>
+                    </div>
+                    <div role="tabpanel" class="panel-collapse collapse" id="colListGroup2" aria-expanded="false">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="#">Criar novo USUÁRIO</a></li>
+                            <li class="list-group-item"><a href="#">Alterar USUÁRIO</a></li>
+                            <li class="list-group-item"><a href="#">Excluir USUÁRIO</a></li>
+                        </ul>
+                        <div class="panel-footer"></div>
+                    </div>
+                </div>
+                <!-- //menu navegação lateral -->
+            </div>
+            <div class="col-sm-9">
+                <div class="conteudo_painel">
+                    <div class="conteudo_painel_int">
+                        
+                        <ul class="nav nav-pills" role="tablist">
+                            <li class="active"><a href="#">E-mails <span class="badge">05</span></a></li>
+                            <li><a href="#">Avisos <span class="badge">10</span></a></li>
+                            <li><a href="#">Mensagens <span class="badge">53</span></a></li>
+                            <li><a href="#">Aniversariantes <span class="badge">2</span></a></li>
+                        </ul>
+                        <hr/>
+                        <div class="well well-sm">
+                            <h2>Seja Bem Vindo Usuário</h2>
+                            <p>Utilize o menu ao lado para acessar as àreas do painel</p>
+                        </div>
+                        
+                        <div class="page-header">
+                            <h3>Avisos:</h3>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>Parabéns  </strong>Você foi recomendado!
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Atenção:   </strong>Você tem até o dia 01/01/2017 para ajustar suas férias!
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3>Minhas Tarefas</h3>
+                                <ul>
+                                    <li>Ligar para Fulano</li>
+                                    <li>Retornar email para Fulano</li>
+                                    <li>Outra Tarefa</li>
+                                </ul>
+                                <a href="#" class="btn btn-primary btn-block">Adicionar Nova Tarefa</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Minhas Tarefas</h3>
+                                <ul>
+                                    <li>Ligar para Fulano</li>
+                                    <li>Retornar email para Fulano</li>
+                                    <li>Outra Tarefa</li>
+                                </ul>
+                                <a href="#" class="btn btn-primary btn-block">Adicionar Nova Tarefa</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Minhas Tarefas</h3>
+                                <ul>
+                                    <li>Ligar para Fulano</li>
+                                    <li>Retornar email para Fulano</li>
+                                    <li>Outra Tarefa</li>
+                                </ul>
+                                <a href="#" class="btn btn-primary btn-block">Adicionar Nova Tarefa</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js">
+  </body>
+</html>
