@@ -4,9 +4,9 @@
     $pessoa = new pessoa();
 
     # CONEXÃO COM O BANCO
-	mysql_connect("localhost","root","") or
-    die("Não foi possível conectar:" . mysql_error());
-	mysql_select_db("u573658764_papel");
+	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+    die("Não foi possível conectar:" . mysqli_connect_errno());
+
 
     # RECEBENDO VALORES DO FORMULÁRIO
 
@@ -24,25 +24,33 @@
 
     if (isset($Login, $Cpf)){
 
-            # SELECT COMPARANDO LOGIN COM BANCO
-            $query = mysql_query("SELECT * FROM pessoa WHERE
-            cd_login = '".$Login."'
-            OR
-            cd_cpf = '".$Cpf."'
-            ");
-    
-            # VERIFICANDO TODAS AS LINHAS PARA ENCONTRAR USUÁRIO
-            $result = mysql_num_rows($query);
-            if($result >= 1){
-                echo "Usuário já cadastrado";
-            } else {
-            # INSERÇÃO NO BANCO DE DADOS
-            $vSQL = "INSERT INTO `pessoa` 
-            (nm_nome, cd_telefone, ds_endereco, vl_salario, cd_login, cd_senha, cd_rg, cd_cpf, cd_adm)  
-            VALUES 
-            ('".$Nome."', '".$Telefone."', '".$Endereco."', '".$Salario."', '".$Login."', '".$Senha."','".$RG."','".$Cpf."','".$Adm."')";
-    
-            $result = mysql_query($vSQL);
+        # SELECT COMPARANDO LOGIN COM BANCO
+        $query = "SELECT * FROM pessoa WHERE cd_login = ? OR cd_cpf = ?";
+
+        # PREPARE QUERY -> VERIFICAÇÃO
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("si", $login, $cpf);
+        $stmt->execute();
+
+        # VERIFICANDO SE USUÁRIO JÁ ESTÁ CADASTRADO
+        $stmt->store_result();
+        $numrows = $stmt->num_rows;
+
+        if($numrows >= 1){
+            echo "Usuário já cadastrado";
+        } else {
+
+            # PREPARE QUERY -> CADASTRO
+            $stmt = $conn->prepare("INSERT INTO pessoa (nm_nome, cd_telefone, ds_endereco, vl_salario, cd_login, cd_senha, cd_rg, cd_cpf, cd_adm) VALUES (?,?,?,?,?,?,?,?,?)");
+            # BIND - PREENCHE OS DADOS
+            $stmt->bind_param("sisdssiii", $Nome, $Telefone, $Endereco, $Salario, $Login, $Senha, $RG, $Cpf, $Adm);
+            # EXECUTE - EXECUTA A QUERY
+            $stmt->execute();
+
+            printf("%d Row inserted.\n", $stmt->affected_rows);
+
+
+            //$result = mysql_query($vSQL);
             if ($result) {
               echo "Seu cadastro foi realizado com sucesso";
 
@@ -56,18 +64,17 @@
             $pessoa->setRG($RG);
             $pessoa->setAdm($Adm);
             $pessoa->setCpf($Cpf);
-            
-            /* RN - Quem cadastra não é o usuário, sendo assim, não grava Cookies e Session do cadastro.
-            setcookie ("Usuario", $pessoa->getLogin(), 3000);
-            setcookie ("Senha", $pessoa->getSenha(), 3000);
-            $_SESSION["ADM"] = $pessoa->getAdm();
-            $_SESSION["Nome"] = $pessoa->getNome();
-            */
+  
 
+            $stmt->close();
+            mysqli_close($conn);
+
+
+        echo '<script>window.location="painel.php";</script>';
         } else {
           echo "Não foi possível realizar o cadastro, tente novamente.";
           // Exibe dados sobre o erro:
-          echo "Dados sobre o erro: " . mysql_error();
+          echo "Dados sobre o erro: " . mysqli_error();
         }
     }
 }
