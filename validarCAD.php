@@ -38,7 +38,7 @@
             } else {
             # INSERÇÃO NO BANCO DE DADOS
             $vSQL = "INSERT INTO `pessoa` 
-            (`nm_nome`, `cd_telefone`, `ds_endereco`, `vl_salario`,`cd_login`,`cd_senha`,`cd_rg`,`cd_cpf`,`cd_adm`)  
+            (nm_nome, cd_telefone, ds_endereco, vl_salario, cd_login, cd_senha, cd_rg, cd_cpf, cd_adm)  
             VALUES 
             ('".$Nome."', '".$Telefone."', '".$Endereco."', '".$Salario."', '".$Login."', '".$Senha."','".$RG."','".$Cpf."','".$Adm."')";
     

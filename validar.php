@@ -52,7 +52,7 @@ if($result == 1){
 echo '<script>window.location="painel.php";</script>';
 }
 else{
-	echo "usuario não encontrado";
+	echo "Usuário não encontrado";
 }
 
 ?>

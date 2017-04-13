@@ -99,7 +99,7 @@
                     </div>
                     <div role="tabpanel" class="panel-collapse collapse" id="colListGroup3" aria-expanded="false">
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="#myModal" data-toggle="modal" >Novo Fornecedor</a></li>
+                            <li class="list-group-item"><a data-toggle="modal" >Novo Fornecedor</a></li>
                             <li class="list-group-item"><a href="#">Listar Fornecedor</a></li>
                         </ul>
                         <div class="panel-footer"></div>
@@ -126,86 +126,21 @@
                 </div>
                 
                 
+    </div>
+            <div class="col-sm-9">
+
+
+<?php
+include("listar.php");
+?>
+
+                    
             </div>
-              <div class="col-sm-9">
-                    <table style="width:100%">
-                      <tr>
-                        <th>Nome</th>
-                        <th>RG</th> 
-                        <th>CPF</th>
-                        <th>Telefone</th>
-                        <th>Endereço</th>
-                        <th>Salário</th>
-                        <th>E-mail</th>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td> 
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    
-                </table>
-                    
-                </div>
     </div>
     <div class="container">        
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Novo Usuário</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form name="formPessoa" id="formPessoa" method='post'>
-                            <div class="row Pessoa">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-lg" placeholder="Nome" name="Nome" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-lg" placeholder="RG" name="RG" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-lg" placeholder="CPF" name="Cpf" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-lg" placeholder="Telefone" name="Telefone" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-lg" placeholder="Endereço" name="Endereco" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-lg" placeholder="Salario" name="Salario" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="text" id="inputText" class="form-control input-lg" placeholder="Login" name="Login" required />
-                                    </div>
-
-                                    <div class="form-group">    
-                                        <input type="password" id="inputPass" class="form-control input-lg" placeholder="Senha" name="Senha" required />
-                                    </div>
-
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="Adm">Administrador
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        <button type="submit" name="CreateUser" class="btn btn-success btn-lg btn-block" value="CreateUser"> 
-                        <span class="glyphicon glyphicon-ok"></span> Criar
-                    </button>
-                </form>
                 <?php
+                include("usermodal.php");
                 include("validarCAD.php");
                 ?>
 
@@ -221,5 +156,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+    // Exibe confirmação delete
+    function confirmarDelete(id) {
+    var verificar = confirm('Você realmente deseja excluir este usuário?');
+    if (verificar){
+        location.href = 'deletar.php?cd_pessoa='+ id;
+        } else {
+        alert('Quase deletou o usuário errado mané.');
+        }    
+    }
+
+    function alterar(id) {
+        location.href = 'alterusermodal.php?cd_pessoa='+ id;
+    }
+    </script>
+
   </body>
 </html>
