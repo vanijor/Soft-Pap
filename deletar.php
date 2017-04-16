@@ -1,17 +1,23 @@
    <?php
    
     # CONEXÃO COM O BANCO
-	mysql_connect("localhost","root","") or
-    die("Não foi possível conectar:" . mysql_error());
-	mysql_select_db("u573658764_papel");
-    
+	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+    die("Não foi possível conectar:" . mysqli_connect_errno());
+
     # RECEBE O ID DA PESSOA POR GET
 	$pessoa = $_GET['cd_pessoa'];
 	
 	# QUERY PARA DELETAR
-	$vSQL = "DELETE FROM pessoa WHERE cd_pessoa = " . $pessoa;
-	//echo "SQL: " . $vSQL;
+	$query = "DELETE FROM pessoa WHERE cd_pessoa = ?";
+
+	# PREPARE QUERY -> VERIFICAÇÃO
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $pessoa);
+    $stmt->execute();
+
 	
-	$result = mysql_query($vSQL);
+    $stmt->close();
+    mysqli_close($conn);
+    
 	echo '<script>window.location="painel.php";</script>';
 	?>

@@ -6,23 +6,34 @@ session_start();
     $Pessoa = new Pessoa();
 
     # CONEXÃO COM O BANCO
-	mysql_connect("localhost","root","") or
-    die("Não foi possível conectar:" . mysql_error());
-	mysql_select_db("u573658764_papel");
+	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+    die("Não foi possível conectar:" . mysqli_connect_errno());
 
-# RECEBENDO DADOS DO LOGIN
-$Login=$_POST["Login"];
-$Senha=$_POST["Password"];
 
-# PROCURANDO DADOS NO BANCO
-$query = mysql_query("SELECT * FROM Pessoa WHERE cd_login = '$Login' AND cd_senha = '$Senha'");
+	# RECEBENDO DADOS DO LOGIN
+	$Login=$_POST["Login"];
+	$Senha=$_POST["Password"];
 
-$result = mysql_num_rows($query);
-if($result == 1){
-	echo "usuario encontrado";
+	# QUERY - Procurar dados no banco
+	$query = "SELECT * FROM pessoa WHERE cd_login = ? AND cd_senha = ?";
+
+	$stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $Login, $Senha);
+
+    # EXECUTE QUERY
+	if($stmt->execute()) {
+    # GUARDANDO RESULTADO
+    $stmt->store_result();
+	}
+
+	$numrows = $stmt->num_rows;
+	echo $numrows;
+	if($numrows == 1){
+		echo "Usuário encontrado";
+
 	
 	# INSTANCIANDO OBJETO - PESSOA
-	while ($result = mysql_fetch_assoc($query)) {
+	while($row=mysqli_fetch_array($result)){
 	
 	    $Pessoa->setNome($result['nm_nome']);
 	    $Pessoa->setTelefone($result['cd_telefone']);
@@ -45,9 +56,6 @@ if($result == 1){
 	$_SESSION["RG"] = $Pessoa->getRG();
 	$_SESSION["Cpf"] = $Pessoa->getCpf();
 	$_SESSION["Adm"] = $Pessoa->getAdm();
-
-
-# NAO ESQUECER: Adicionar pagina	
 
 echo '<script>window.location="painel.php";</script>';
 }

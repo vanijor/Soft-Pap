@@ -29,7 +29,7 @@
 
         # PREPARE QUERY -> VERIFICAÇÃO
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("si", $login, $cpf);
+        $stmt->bind_param("si", $Login, $Cpf);
         $stmt->execute();
 
         # VERIFICANDO SE USUÁRIO JÁ ESTÁ CADASTRADO
@@ -40,17 +40,19 @@
             echo "Usuário já cadastrado";
         } else {
 
+            # QUERY - INSERIR DADOS
+            $query = "INSERT INTO pessoa (nm_nome, cd_telefone, ds_endereco, vl_salario, cd_login, cd_senha, cd_rg, cd_cpf, cd_adm) VALUES (?,?,?,?,?,?,?,?,?)";
             # PREPARE QUERY -> CADASTRO
-            $stmt = $conn->prepare("INSERT INTO pessoa (nm_nome, cd_telefone, ds_endereco, vl_salario, cd_login, cd_senha, cd_rg, cd_cpf, cd_adm) VALUES (?,?,?,?,?,?,?,?,?)");
+            $stmt = $conn->prepare($query);
+
             # BIND - PREENCHE OS DADOS
             $stmt->bind_param("sisdssiii", $Nome, $Telefone, $Endereco, $Salario, $Login, $Senha, $RG, $Cpf, $Adm);
             # EXECUTE - EXECUTA A QUERY
             $stmt->execute();
 
             printf("%d Row inserted.\n", $stmt->affected_rows);
+             
 
-
-            //$result = mysql_query($vSQL);
             if ($result) {
               echo "Seu cadastro foi realizado com sucesso";
 
@@ -68,13 +70,14 @@
 
             $stmt->close();
             mysqli_close($conn);
-
+        
 
         echo '<script>window.location="painel.php";</script>';
         } else {
           echo "Não foi possível realizar o cadastro, tente novamente.";
           // Exibe dados sobre o erro:
           echo "Dados sobre o erro: " . mysqli_error();
+
         }
     }
 }

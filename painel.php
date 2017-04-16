@@ -1,3 +1,7 @@
+<?
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -171,6 +175,13 @@ include("listar.php");
     function alterar(id) {
         location.href = 'alterusermodal.php?cd_pessoa='+ id;
     }
+            
+    function alertx(){
+    alert($_SESSION['AltNome']);
+    }
+    window.onload = alertx;
+
+    document.getElementById("nome").value = $_SESSION['AltNome'];
     </script>
 
   </body>

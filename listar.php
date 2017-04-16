@@ -1,13 +1,23 @@
 <?php
 
+    # INSTANCIANDO PESSOA
+    require_once("classes/pessoa.php");
+    $pessoa = new pessoa();
+
     # CONEXÃO COM O BANCO
-	mysql_connect("localhost","root","") or
-    die("Não foi possível conectar:" . mysql_error());
-	mysql_select_db("u573658764_papel");
+	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+    die("Não foi possível conectar:" . mysqli_connect_errno());
   
 	# CONSULTA NO BANCO
-	$result = mysql_query("SELECT cd_pessoa, nm_nome, cd_telefone, ds_endereco, vl_salario, cd_rg, cd_cpf, cd_adm 
-							FROM pessoa");
+    $query = "SELECT cd_pessoa, nm_nome, cd_telefone, ds_endereco, vl_salario, cd_rg, cd_cpf, cd_adm FROM pessoa";
+
+    # PREPARE QUERY -> VERIFICAÇÃO
+    $stmt = $conn->prepare($query);
+    # EXECUTE QUERY
+	if($stmt->execute()) {
+    # GUARDANDO RESULTADO
+    $result = $stmt->get_result();
+	}
 
 	# MONTANDO ESTRUTURA DA TABELA
        printf("<table class="."table".">
@@ -24,11 +34,11 @@
        printf("</tr>");
 
     # EXIBINDO LINHAS DA TABELA
-	while($row=mysql_fetch_array($result,MYSQL_ASSOC)) 
+	while($row=mysqli_fetch_array($result)) 
     {
-       printf("<tr>");
+        printf("<tr>");
 
-	   printf("<td>" .
+	    printf("<td>" .
 	   	$row["cd_pessoa"]
 	    . "</td><td>" . 
 	   	$row["nm_nome"]
@@ -47,24 +57,40 @@
 	    . "</td><td>" .
 		"<button onClick="."confirmarDelete(".$row['cd_pessoa'].")"."> APAGAR </button>"
 		. " | " .
-		"<button onClick="."alterar(".$row['cd_pessoa'].")"."> ALTERAR </button>"
+		"<button onClick="."alterar(".$row["cd_pessoa"].")"."> ALTERAR </button>"
 	    );
 
-
-	   printf("</tr>");
+	printf("</tr>");
 	} 
 
-	mysql_free_result($result);
+  while ($row=mysqli_fetch_array($result)) {
+  
+      $Pessoa->setNome($result['nm_nome']);
+      $Pessoa->setTelefone($result['cd_telefone']);
+      $Pessoa->setEndereco($result['ds_endereco']);
+      $Pessoa->setSalario($result['vl_salario']);
+      $Pessoa->setLogin($result['cd_login']);
+      $Pessoa->setSenha($result['cd_senha']);
+      $Pessoa->setRG($result['cd_rg']);
+      $Pessoa->setAdm($result['cd_adm']);
+      $Pessoa->setCpf($result['cd_cpf']);
 
-	# MODAL DO JORGE
-	# <a href="#myModal" data-toggle="modal" >
+      $_SESSION["AltNome"] = $Pessoa->getNome();
+      $_SESSION["AltTelefone"] = $Pessoa->getTelefone();
+      $_SESSION["AltEndereco"] = $Pessoa->getEndereco(); 
+      $_SESSION["AltSalario"] = $Pessoa->getSalario();
+      $_SESSION["AltRG"] = $Pessoa->getRG();
+      $_SESSION["AltCpf"] = $Pessoa->getCpf();
+      $_SESSION["AltAdm"] = $Pessoa->getAdm();
 
-	#	DELETE SEM CONFIRMAÇÃO
-	#        "<a href=deletar.php?cd_pessoa="
-	#		 . $row["cd_pessoa"]  . "> APAGAR </a>"
+    }
 
 
-	?>
+
+	  $stmt->close();
+    mysqli_close($conn);
+
+?>
 
 
 
