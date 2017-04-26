@@ -1,4 +1,5 @@
 <?php
+
     # INSTANCIANDO PESSOA
     require_once("classes/pessoa.php");
     $pessoa = new pessoa();
@@ -9,7 +10,6 @@
 
 
     # RECEBENDO VALORES DO FORMULÁRIO
-
     if (isset($_POST["CreateUser"])) { 
         $Nome = $_POST['Nome'];
         $Telefone = $_POST['Telefone'];
@@ -39,7 +39,6 @@
         if($numrows >= 1){
             echo "Usuário já cadastrado";
         } else {
-
             # QUERY - INSERIR DADOS
             $query = "INSERT INTO pessoa (nm_nome, cd_telefone, ds_endereco, vl_salario, cd_login, cd_senha, cd_rg, cd_cpf, cd_adm) VALUES (?,?,?,?,?,?,?,?,?)";
             # PREPARE QUERY -> CADASTRO
@@ -49,14 +48,12 @@
             $stmt->bind_param("sisdssiii", $Nome, $Telefone, $Endereco, $Salario, $Login, $Senha, $RG, $Cpf, $Adm);
             # EXECUTE - EXECUTA A QUERY
             $stmt->execute();
-
             printf("%d Row inserted.\n", $stmt->affected_rows);
-             
-
+            
             if ($result) {
               echo "Seu cadastro foi realizado com sucesso";
 
-            # INSTANCIANDO OBJETO pessoa
+            # ATRIBUINDO AO OBJETO PESSOA
             $pessoa->setNome($Nome);
             $pessoa->setTelefone($Telefone);
             $pessoa->setEndereco($Endereco);
@@ -66,8 +63,8 @@
             $pessoa->setRG($RG);
             $pessoa->setAdm($Adm);
             $pessoa->setCpf($Cpf);
-  
 
+            # FECHANDO STATEMENT E CONEXÃO BD
             $stmt->close();
             mysqli_close($conn);
         

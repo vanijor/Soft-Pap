@@ -1,59 +1,42 @@
-    <title>Painel de Controle</title>
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link href="css/estilo.css" rel="stylesheet">
-          <link href="css/painel.css" rel="stylesheet">
+        <div class="modal" id="myModal2"  role="dialog">
+            <div class="modal-dialog">
 
-
-        <!-- Modal content-->
+                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Novo Usuário</h4>
+                        <h4 class="modal-title">Alterar Usuário</h4>
                     </div>
                     <div class="modal-body">
                         <form name="formPessoa" id="formPessoa" method='post'>
                             <div class="row Pessoa">
                                 <div class="col-md-6">
+                                <input type="hidden" name="AltId" required />
                                     <div class="form-group">
-                                        <input type="text" id="nome"
-                                        class="form-control input-lg" placeholder="Nome" name="Nome" />
+                                        <input type="text" class="form-control input-lg" placeholder="Nome" name="AltNome" required />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" value='
-                                        <?php $_SESSION["AltRG"] ?>'
-                                        class="form-control input-lg" placeholder="RG" name="RG" />
+                                        <input type="text" class="form-control input-lg" placeholder="RG" name="AltRG" required />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" value='
-                                        <?php $_SESSION["AltCPF"] ?>'
-                                        class="form-control input-lg" placeholder="CPF" name="Cpf" />
+                                        <input type="text" class="form-control input-lg" placeholder="CPF" name="AltCpf" required />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" value='
-                                        <?php $_SESSION["AltTelefone"] ?>'
-                                        class="form-control input-lg" placeholder="Telefone" name="Telefone" />
+                                        <input type="text" class="form-control input-lg" placeholder="Telefone" name="AltTelefone" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" value='
-                                        <?php $_SESSION["AltEndereco"] ?>'
-                                        class="form-control input-lg" placeholder="Endereço" name="Endereco" />
+                                        <input type="text" class="form-control input-lg" placeholder="Endereço" name="AltEndereco" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" value='
-                                        <?php $_SESSION["AltSalario"] ?>'
-                                        class="form-control input-lg" placeholder="Salario" name="Salario" />
+                                        <input type="text" class="form-control input-lg" placeholder="Salario" name="AltSalario" />
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text"
-                                        id="inputText" class="form-control input-lg" placeholder="Login" name="Login" />
+                                        <input type="text" id="inputText" class="form-control input-lg" placeholder="Login" name="AltLogin" required />
                                     </div>
 
                                     <div class="form-group">    
-                                        <input type="password"
-                                        id="inputPass" class="form-control input-lg" placeholder="Senha" name="Senha" />
+                                        <input type="password" id="inputPass" class="form-control input-lg" placeholder="Senha" name="AltSenha" required />
                                     </div>
 
                                     <div class="checkbox">
@@ -72,5 +55,12 @@
                     ?>
 
                 </form>
-  </body>
-</html>
+
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  
+</div>

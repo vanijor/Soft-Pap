@@ -1,8 +1,8 @@
 <?php
 
-    # INSTANCIANDO PESSOA
-    require_once("classes/pessoa.php");
-    $pessoa = new pessoa();
+  # INSTANCIANDO PESSOA
+  require_once("classes/pessoa.php");
+  $pessoa = new pessoa();
 
     # CONEXÃO COM O BANCO
 	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
@@ -20,18 +20,18 @@
 	}
 
 	# MONTANDO ESTRUTURA DA TABELA
-       printf("<table class="."table".">
+      printf("<table class="."table".">
        	       <tr>");
-       printf("<th>ID</th>");
-       printf("<th>Nome</th>");
-       printf("<th>Telefone</th>");
-       printf("<th>Endereço</th>");
-       printf("<th>Salário</th>");
-       printf("<th>RG</th>");
-       printf("<th>CPF</th>");
-       printf("<th>Admin</th>");
-       printf("<th>Comandos</th>");
-       printf("</tr>");
+      printf("<th>ID</th>");
+      printf("<th>Nome</th>");
+      printf("<th>Telefone</th>");
+      printf("<th>Endereço</th>");
+      printf("<th>Salário</th>");
+      printf("<th>RG</th>");
+      printf("<th>CPF</th>");
+      printf("<th>Admin</th>");
+      printf("<th>Comandos</th>");
+      printf("</tr>");
 
     # EXIBINDO LINHAS DA TABELA
 	while($row=mysqli_fetch_array($result)) 
@@ -57,10 +57,22 @@
 	    . "</td><td>" .
 		"<button onClick="."confirmarDelete(".$row['cd_pessoa'].")"."> APAGAR </button>"
 		. " | " .
-		"<button onClick="."alterar(".$row["cd_pessoa"].")"."> ALTERAR </button>"
-	    );
+		"<button id="."setModalData("
+      .$row['cd_pessoa'].")> ALTERAR </button>"
+      #.","
+      #."$row[nm_nome]".","
+      #.$row['cd_telefone'].","
+      #.$row['ds_endereco'].","
+      #.$row['vl_salario'].","
+      #.$row['cd_rg'].","
+      #.$row['cd_cpf'].","
+      #.$row['cd_adm'].
+      
+	    
+      );
 
 	printf("</tr>");
+
 	} 
 
   while ($row=mysqli_fetch_array($result)) {
@@ -84,8 +96,6 @@
       $_SESSION["AltAdm"] = $Pessoa->getAdm();
 
     }
-
-
 
 	  $stmt->close();
     mysqli_close($conn);

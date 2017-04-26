@@ -49,4 +49,16 @@
                         <span class="glyphicon glyphicon-ok"></span> Criar
                     </button>
 
+                    <?php
+                    include("validarCAD.php");
+                    ?>
+
                 </form>
+                                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  
+</div>

@@ -145,23 +145,13 @@ include("listar.php");
         <!-- Modal -->
                 <?php
                 include("usermodal.php");
-                include("validarCAD.php");
+                include("alterusermodal.php");
                 ?>
-
-                  </div>
-
-              </div>
-
-          </div>
-      </div>
-  
-</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-
-    <script>
+    <script language="javascript" type="text/javascript">
     // Exibe confirmação delete
     function confirmarDelete(id) {
     var verificar = confirm('Você realmente deseja excluir este usuário?');
@@ -171,18 +161,24 @@ include("listar.php");
         alert('Quase deletou o usuário errado mané.');
         }    
     }
-
-    function alterar(id) {
-        location.href = 'alterusermodal.php?cd_pessoa='+ id;
+    
+    // Envia dado pro modal
+window.onload = function(){
+    function setModalData(id/*, tel, end, sal, rg, cpf, adm*/) {
+        $("#myModal2").modal();
+    document.getElementById('AltId').value = id;
+    //document.getElementById('AltNome').value = nome;
+    //document.getElementById('AltTelefone').value = tel;
+    //document.getElementById('AltEndereco').value = end;
+    //document.getElementById('AltSalario').value = sal;
+    //document.getElementById('AltRG').value = rg;
+    //document.getElementById('AltCpf').value = cpf;
+    //document.getElementById('AltAdm').value = adm;
     }
-            
-    function alertx(){
-    alert($_SESSION['AltNome']);
-    }
-    window.onload = alertx;
+};
 
-    document.getElementById("nome").value = $_SESSION['AltNome'];
     </script>
+
 
   </body>
 </html>
