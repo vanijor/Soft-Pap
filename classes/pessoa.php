@@ -11,6 +11,7 @@
 		private $Login;
 		private $Senha;
 
+
 		function __construct($Nome='', $Telefone='',$Endereco='', $Salario='', $Login='', $Senha='', $RG='', $Adm='',$Cpf='')
 		{
 			$this->Nome = $Nome;

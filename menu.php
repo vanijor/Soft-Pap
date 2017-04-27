@@ -51,7 +51,7 @@
                     </div>
                     <div role="tabpanel" class="panel-collapse collapse" id="colListGroup3" aria-expanded="false">
                         <ul class="list-group">
-                            <li class="list-group-item"><a data-toggle="modal" >Novo Fornecedor</a></li>
+                            <li class="list-group-item"><a href="#myModal2" data-toggle="modal" >Novo Fornecedor</a></li>
                             <li class="list-group-item"><a href="#">Listar Fornecedor</a></li>
                         </ul>
                         <div class="panel-footer"></div>
