@@ -38,9 +38,9 @@
     $stmt->close();
     mysqli_close($conn);
 
- echo '<script>window.location="painel.php";</script>';
+ echo '<script>window.location="painel_list_user.php";</script>';
 	} else {
-	echo "Dados sobre o erro: " . mysqli_error();
+	echo "Dados sobre o erro: " . mysqli_error($conn);
 }
 
 ?>

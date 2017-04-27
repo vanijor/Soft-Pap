@@ -60,17 +60,13 @@
 	    . "</td><td>" .
 		"<button onClick="."confirmarDelete(".$cd_pessoa.")> APAGAR </button>"
 		. " | " .
-		"<button id="."setModalData("
-      .$cd_pessoa.")> ALTERAR </button>"
-      #.","
-      #."$row[nm_nome]".","
-      #.$row['cd_telefone'].","
-      #.$row['ds_endereco'].","
-      #.$row['vl_salario'].","
-      #.$row['cd_rg'].","
-      #.$row['cd_cpf'].","
-      #.$row['cd_adm'].
-      
+		"<button onClick="."sendEditData("
+      .$cd_pessoa.","
+      .$cd_telefone.","
+      .$vl_salario.","
+      .$cd_rg.","
+      .$cd_cpf.
+      ")"."> ALTERAR </button>"
 	    
       );
 

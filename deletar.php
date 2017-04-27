@@ -19,5 +19,5 @@
     $stmt->close();
     mysqli_close($conn);
     
-	echo '<script>window.location="painel.php";</script>';
+	echo '<script>window.location="painel_list_user.php";</script>';
 	?>

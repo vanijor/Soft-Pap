@@ -56,6 +56,9 @@ session_start();
             <div class="col-sm-9">
 
 
+<?php
+include("listar.php");
+?>
 
                     
             </div>
@@ -76,23 +79,22 @@ session_start();
     if (verificar){
         location.href = 'deletar.php?cd_pessoa='+ id;
         } else {
-        alert('Quase deletou o usuário errado mané.');
+        alert('Cancelado.');
         }    
     }
     
     // Envia dado pro modal
-window.onload = function(){
-    function sendEditData(id/*, tel, end, sal, rg, cpf, adm*/) {
-    document.getElementById('AltId').value = id;
-    //document.getElementById('AltNome').value = nome;
-    //document.getElementById('AltTelefone').value = tel;
-    //document.getElementById('AltEndereco').value = end;
-    //document.getElementById('AltSalario').value = sal;
-    //document.getElementById('AltRG').value = rg;
-    //document.getElementById('AltCpf').value = cpf;
-    //document.getElementById('AltAdm').value = adm;
+    function sendEditData(id, tel, sal, rg, cpf) {
+    /* document.getElementById('AltId').value = id;
+    document.getElementById('AltNome').value = nome;
+    document.getElementById('AltTelefone').value = tel;
+    document.getElementById('AltEndereco').value = end;
+    document.getElementById('AltSalario').value = sal;
+    document.getElementById('AltRG').value = rg;
+    document.getElementById('AltCpf').value = cpf;
+    document.getElementById('AltAdm').value = adm;*/
+    location.href = 'painel_edit_user.php?cd_pessoa='+ id +'&cd_telefone='+ tel +'&vl_salario='+ sal +'&cd_rg='+ rg +'&cd_cpf='+ cpf;
     }
-};
 
     // Envia dado pro modal
     function alterar(id) {
