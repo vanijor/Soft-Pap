@@ -1,14 +1,14 @@
    <?php
    
     # CONEXÃO COM O BANCO
-	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+	$conn = mysqli_connect("mysql.hostinger.com.br","u573658764_dsa","labes123","u573658764_papel") or
     die("Não foi possível conectar:" . mysqli_connect_errno());
 
     # RECEBE O ID DA PESSOA POR GET
 	$pessoa = $_GET['cd_pessoa'];
 	
 	# QUERY PARA DELETAR
-	$query = "DELETE FROM pessoa WHERE cd_pessoa = ?";
+	$query = "DELETE FROM Pessoa WHERE cd_pessoa = ?";
 
 	# PREPARE QUERY -> VERIFICAÇÃO
     $stmt = $conn->prepare($query);

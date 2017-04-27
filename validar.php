@@ -6,7 +6,7 @@ session_start();
     $Pessoa = new Pessoa();
 
     # CONEXÃO COM O BANCO
-	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+	$conn = mysqli_connect("mysql.hostinger.com.br","u573658764_dsa","labes123","u573658764_papel") or
     die("Não foi possível conectar:" . mysqli_connect_errno());
 
 
@@ -15,7 +15,7 @@ session_start();
 	$Senha=$_POST["Password"];
 
 	# QUERY - Procurar dados no banco
-	$query = "SELECT * FROM pessoa WHERE cd_login = ? AND cd_senha = ?";
+	$query = "SELECT * FROM Pessoa WHERE cd_login = ? AND cd_senha = ?";
 
 	$stmt = $conn->prepare($query);
     $stmt->bind_param("ss", $Login, $Senha);

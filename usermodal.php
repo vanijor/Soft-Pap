@@ -50,7 +50,7 @@
                     </button>
 
                     <?php
-                    include("validarCAD.php");
+                    include("cadastrar.php");
                     ?>
 
                 </form>

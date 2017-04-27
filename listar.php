@@ -5,19 +5,22 @@
   $pessoa = new pessoa();
 
     # CONEXÃO COM O BANCO
-	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+	$conn = mysqli_connect("mysql.hostinger.com.br","u573658764_dsa","labes123","u573658764_papel") or
     die("Não foi possível conectar:" . mysqli_connect_errno());
   
 	# CONSULTA NO BANCO
-    $query = "SELECT cd_pessoa, nm_nome, cd_telefone, ds_endereco, vl_salario, cd_rg, cd_cpf, cd_adm FROM pessoa";
+    $query = "SELECT cd_pessoa, nm_nome, cd_telefone, ds_endereco, vl_salario, cd_rg, cd_cpf, cd_adm FROM Pessoa";
 
     # PREPARE QUERY -> VERIFICAÇÃO
     $stmt = $conn->prepare($query);
     # EXECUTE QUERY
+
 	if($stmt->execute()) {
-    # GUARDANDO RESULTADO
-    $result = $stmt->get_result();
+    # VERIFICA ERROS
+    print_r(mysqli_error($conn));
 	}
+    # GUARDANDO RESULTADO
+    $stmt->bind_result($cd_pessoa, $nm_nome, $cd_telefone, $ds_endereco, $vl_salario, $cd_rg, $cd_cpf, $cd_adm);
 
 	# MONTANDO ESTRUTURA DA TABELA
       printf("<table class="."table".">
@@ -34,31 +37,31 @@
       printf("</tr>");
 
     # EXIBINDO LINHAS DA TABELA
-	while($row=mysqli_fetch_array($result)) 
+	while($stmt->fetch()) 
     {
         printf("<tr>");
 
 	    printf("<td>" .
-	   	$row["cd_pessoa"]
+	   	$cd_pessoa
 	    . "</td><td>" . 
-	   	$row["nm_nome"]
+	   	$nm_nome
 	    . "</td><td>" . 
-	    $row["cd_telefone"]
+	    $cd_telefone
 	    . "</td><td>" . 
-	     $row["ds_endereco"]
+	    $ds_endereco
 	    . "</td><td>" . 
-	    $row["vl_salario"]
+	    $vl_salario
 	    . "</td><td>" . 
-	     $row["cd_rg"]
+	    $cd_rg
 	    . "</td><td>" .
-	    $row["cd_cpf"]
+	    $cd_cpf
 	    . "</td><td>" .
-	    $row["cd_adm"]
+	    $cd_adm
 	    . "</td><td>" .
-		"<button onClick="."confirmarDelete(".$row['cd_pessoa'].")"."> APAGAR </button>"
+		"<button onClick="."confirmarDelete(".$cd_pessoa.")> APAGAR </button>"
 		. " | " .
 		"<button id="."setModalData("
-      .$row['cd_pessoa'].")> ALTERAR </button>"
+      .$cd_pessoa.")> ALTERAR </button>"
       #.","
       #."$row[nm_nome]".","
       #.$row['cd_telefone'].","
@@ -75,17 +78,17 @@
 
 	} 
 
-  while ($row=mysqli_fetch_array($result)) {
+  while ($stmt->fetch()) {
   
-      $Pessoa->setNome($result['nm_nome']);
-      $Pessoa->setTelefone($result['cd_telefone']);
-      $Pessoa->setEndereco($result['ds_endereco']);
-      $Pessoa->setSalario($result['vl_salario']);
-      $Pessoa->setLogin($result['cd_login']);
-      $Pessoa->setSenha($result['cd_senha']);
-      $Pessoa->setRG($result['cd_rg']);
-      $Pessoa->setAdm($result['cd_adm']);
-      $Pessoa->setCpf($result['cd_cpf']);
+      $Pessoa->setNome($nm_nome);
+      $Pessoa->setTelefone($cd_telefone);
+      $Pessoa->setEndereco($ds_endereco);
+      $Pessoa->setSalario($vl_salario);
+      $Pessoa->setLogin($cd_login);
+      $Pessoa->setSenha($cd_senha);
+      $Pessoa->setRG($cd_rg);
+      $Pessoa->setAdm($cd_adm);
+      $Pessoa->setCpf($cd_cpf);
 
       $_SESSION["AltNome"] = $Pessoa->getNome();
       $_SESSION["AltTelefone"] = $Pessoa->getTelefone();

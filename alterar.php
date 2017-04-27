@@ -5,24 +5,28 @@
     $pessoa = new pessoa();
 
     # CONEXÃO COM O BANCO
-	$conn = mysqli_connect("localhost","root","","u573658764_papel") or
+	$conn = mysqli_connect("mysql.hostinger.com.br","u573658764_dsa","labes123","u573658764_papel") or
     die("Não foi possível conectar:" . mysqli_connect_errno());
+
+    # RECEBE O ID DA PESSOA POR GET
+    $Pessoa = $_GET['cd_pessoa'];
+
+    echo $Pessoa;
     
     # RECEBENDO VALORES DO FORMULARIO 
 	if (isset($_POST["AlterUser"])) { 
-        $Pessoa = $_POST['id'];
-        $AltNome = $_POST['Nome'];
-        $AltTelefone = $_POST['Telefone'];
-        $AltEndereco = $_POST['Endereco'];
-        $AltSalario = $_POST['Salario'];
-        $AltLogin = $_POST['Login'];
-        $AltSenha = $_POST['Senha'];
-        $AltRG = $_POST['RG'];
-        $AltCpf = $_POST['Cpf'];
-        $AltAdm = isset($_POST['Adm']);
+        $Nome = $_POST['AltNome'];
+        $Telefone = $_POST['AltTelefone'];
+        $Endereco = $_POST['AltEndereco'];
+        $Salario = $_POST['AltSalario'];
+        $Login = $_POST['AltLogin'];
+        $Senha = $_POST['AltSenha'];
+        $RG = $_POST['AltRG'];
+        $Cpf = $_POST['AltCpf'];
+        $Adm = isset($_POST['Adm']);
 	
 	# QUERY PARA ALTERAR
-	$query = "UPDATE pessoa SET nm_nome = ?, cd_telefone = ?, ds_endereco = ?, vl_salario = ?, cd_login = ?, cd_senha = ?, cd_rg = ?, cd_cpf = ?, cd_adm = ? WHERE cd_pessoa = ?";
+	$query = "UPDATE Pessoa SET nm_nome = ?, cd_telefone = ?, ds_endereco = ?, vl_salario = ?, cd_login = ?, cd_senha = ?, cd_rg = ?, cd_cpf = ?, cd_adm = ? WHERE cd_pessoa = ?";
 
 	# PREPARE QUERY 
     $stmt = $conn->prepare($query);
@@ -31,9 +35,12 @@
     # EXECUTE QUERY
 	$stmt->execute();
 
-    echo '<script>window.location="painel.php";</script>';
+    $stmt->close();
+    mysqli_close($conn);
+
+ echo '<script>window.location="painel.php";</script>';
 	} else {
-	echo "Dados sobre o erro: " . mysql_error();
+	echo "Dados sobre o erro: " . mysqli_error();
 }
 
 ?>
