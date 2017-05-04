@@ -32,7 +32,7 @@
                     </div>
                     <div role="tabpanel" class="panel-collapse collapse" id="colListGroup2" aria-expanded="false">
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="#myModal" data-toggle="modal" >Criar novo USUÁRIO</a></li>
+                            <li class="list-group-item"><a href="#create_modal" data-toggle="modal" >Criar novo USUÁRIO</a></li>
                             <li class="list-group-item"><a href="painel_list_user.php">Listar USUÁRIO</a></li>
                         </ul>
                         <div class="panel-footer"></div>

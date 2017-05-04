@@ -48,61 +48,59 @@ session_start();
           </ul>          
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>
-      
+    </nav> 
     <?php
     include("menu.php");
     ?>
-            <div class="col-sm-9">
-
-
-<?php
-include("listar.php");
-?>
-
-                    
-            </div>
+      <div class="col-sm-9">
+        <?php
+        include("listar.php");
+        ?>          
+      </div>
     </div>
     <div class="container">        
-        <!-- Modal -->
-                <?php
-                include("usermodal.php");
-                ?>
+        <!-- Modals -->
+      <?php
+      include("usermodal/create_modal.php");
+      include("usermodal/update_modal.php");
+      include("usermodal/delete_modal.php");
+      ?>
+    </div>
+
+    <div class="modal fade" id="update_modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script language="javascript" type="text/javascript">
-    // Exibe confirmação delete
-    function confirmarDelete(id) {
-    var verificar = confirm('Você realmente deseja excluir este usuário?');
-    if (verificar){
-        location.href = 'deletar.php?cd_pessoa='+ id;
-        } else {
-        alert('Cancelado.');
-        }    
-    }
-    
-    // Envia dado pro modal
-    function sendEditData(id, tel, sal, rg, cpf) {
-    /* document.getElementById('AltId').value = id;
-    document.getElementById('AltNome').value = nome;
-    document.getElementById('AltTelefone').value = tel;
-    document.getElementById('AltEndereco').value = end;
-    document.getElementById('AltSalario').value = sal;
-    document.getElementById('AltRG').value = rg;
-    document.getElementById('AltCpf').value = cpf;
-    document.getElementById('AltAdm').value = adm;*/
-    location.href = 'painel_edit_user.php?cd_pessoa='+ id +'&cd_telefone='+ tel +'&vl_salario='+ sal +'&cd_rg='+ rg +'&cd_cpf='+ cpf;
-    }
 
-    // Envia dado pro modal
-    function alterar(id) {
-        location.href = 'deletar.php?cd_pessoa='+ id;
-    }
 
+    <!-- AJAX UPDATE --> 
+    <script type="text/javascript">
+    $('.modalLink').click(function(){
+        var cd_pessoa= $(this).attr('data-id');
+        $.ajax({
+          url:"usermodal/update_modal.php?cd_pessoa="+cd_pessoa,
+          cache:false,
+          success:function(result){
+            $("#update_modal").html(result);
+            $("#update_modal").modal("show");
+          }});
+    });
     </script>
 
+    <!-- JAVASCRIPT DELETE--> 
+    <script type="text/javascript">
+        function confirm_modal(delete_url)
+        {
+          $('#delete_modal').modal('show', {backdrop: 'static'});
+          document.getElementById('delete_link').setAttribute('href', delete_url);
+        }
+    </script>
 
   </body>
 </html>

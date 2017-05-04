@@ -1,23 +1,12 @@
-   <?php
-   
-    # CONEXÃO COM O BANCO
-	$conn = mysqli_connect("mysql.hostinger.com.br","u573658764_dsa","labes123","u573658764_papel") or
-    die("Não foi possível conectar:" . mysqli_connect_errno());
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+    # INSTANCIANDO PESSOA
+    require_once("classes/pessoa.php");
+    $pessoa = new pessoa();
 
     # RECEBE O ID DA PESSOA POR GET
-	$pessoa = $_GET['cd_pessoa'];
+	$Id = $_GET['cd_pessoa'];
 	
-	# QUERY PARA DELETAR
-	$query = "DELETE FROM Pessoa WHERE cd_pessoa = ?";
-
-	# PREPARE QUERY -> VERIFICAÇÃO
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $pessoa);
-    $stmt->execute();
-
-	
-    $stmt->close();
-    mysqli_close($conn);
-    
-	echo '<script>window.location="painel_list_user.php";</script>';
+	$pessoa->delete($Id);
 	?>

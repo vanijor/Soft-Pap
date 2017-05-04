@@ -80,20 +80,6 @@ session_start();
         alert('Quase deletou o usuário errado mané.');
         }    
     }
-    
-    // Envia dado pro modal
-window.onload = function(){
-    function sendEditData(id/*, tel, end, sal, rg, cpf, adm*/) {
-    document.getElementById('AltId').value = id;
-    //document.getElementById('AltNome').value = nome;
-    //document.getElementById('AltTelefone').value = tel;
-    //document.getElementById('AltEndereco').value = end;
-    //document.getElementById('AltSalario').value = sal;
-    //document.getElementById('AltRG').value = rg;
-    //document.getElementById('AltCpf').value = cpf;
-    //document.getElementById('AltAdm').value = adm;
-    }
-};
 
     // Envia dado pro modal
     function alterar(id) {
