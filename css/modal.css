@@ -1,0 +1,221 @@
+/* MODAL */
+.modal-header {
+	color:#FFF;
+  padding: 15px;
+    background: linear-gradient(
+  		to right, 
+  		#0C93E4, 
+  		#1EB3D2 
+  	);
+  border-bottom: 1px solid transparent;
+  border-color: #1883f7;
+  margin-bottom: 20px;
+}
+.modal-header .close {
+  margin-top: -2px;
+}
+
+.close {
+  opacity: 1;
+  color: #FFF;
+}
+
+.modal-body {
+  padding: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.modal-content {
+border-radius: 0px;
+}
+
+/* INPUTS */
+.input-lg {
+  width: 50%;
+}
+
+/* BOTAO */
+.btn {
+  border-bottom: 2px solid transparent;
+  border-radius: 0px;
+}
+
+.btn-create {
+  width:100%;
+  color: #fff;
+  background: linear-gradient(
+  		to right, 
+  		#0C93E4, 
+  		#1EB3D2 
+  	);
+  border-color: #1883f7;
+}
+.btn-create:focus,
+.btn-create.focus {
+  color: #fff;
+    background: linear-gradient(
+      to right,
+      #27daf1,
+      #0D61BB
+    );
+  border-color: #0B69E4;
+}
+.btn-create:hover {
+  color: #fff;
+  	background: linear-gradient(
+      to right,
+      #09548C,
+      #0D61BB
+    );
+  border-color: #0988c3;
+}
+
+.btn-create:active,
+.btn-create.active,
+.open > .dropdown-toggle.btn-create {
+  color: #fff;
+  	background: linear-gradient(
+      to right,
+      #0B3EE4,
+      #0D61BB
+    );
+  border-color: #0BC3E4;
+}
+.btn-create:active:hover,
+.btn-create.active:hover,
+.open > .dropdown-toggle.btn-create:hover,
+.btn-create:active:focus,
+.btn-create.active:focus,
+.open > .dropdown-toggle.btn-create:focus,
+.btn-create:active.focus,
+.btn-create.active.focus,
+.open > .dropdown-toggle.btn-create.focus {
+  color: #fff;
+  	background: linear-gradient(
+      to right,
+      #0C93E4,
+      #0D61BB
+    );
+  border-color: #0BC3E4;
+}
+.btn-create:active,
+.btn-create.active,
+.open > .dropdown-toggle.btn-create {
+  background-image: none;
+}
+.btn-create.disabled:hover,
+.btn-create[disabled]:hover,
+fieldset[disabled] .btn-create:hover,
+.btn-create.disabled:focus,
+.btn-create[disabled]:focus,
+fieldset[disabled] .btn-create:focus,
+.btn-create.disabled.focus,
+.btn-create[disabled].focus,
+fieldset[disabled] .btn-create.focus {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-create .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+
+/* CHECKBOX */
+
+.control-group {
+  display: inline-block;
+  vertical-align: top;
+  background: #fff;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.control {
+  display: block;
+  position: relative;
+  padding-left: 100px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control__indicator {
+  position: sticky;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #e6e6e6;
+}
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  background: #61B5E7;
+}
+.control input:checked ~ .control__indicator {
+  background: #16aed4;
+}
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #0D93B9;
+}
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.control__indicator:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+.control--checkbox .control__indicator:after {
+  left: 8px;
+  top: 4px;
+  width: 3px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+/* SELETOR */
+    .wrap {
+      width: 53%;
+      margin-bottom: 15px;
+    }
+
+    .custom-select {
+      border: 1px solid #CCC;
+      border-radius: 6px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 auto;
+      padding: 10px;
+      height: 48px;
+      font-size: 18px;
+
+      line-height: 1.3333333;
+
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+      .custom-select {
+        background: #FFFFFF url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/392/select-arrow.png) 95% 50% no-repeat;
+      }
+    }
