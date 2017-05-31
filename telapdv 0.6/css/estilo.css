@@ -1,0 +1,81 @@
+th{
+    text-align: center;
+}
+h1, .panel-heading{
+    font-weight: bolder;
+
+}
+div{
+	text-align: center;
+}
+div .sdw{
+	box-shadow: 2px 2px 3px #252527;    
+    -moz-box-shadow: 2px 2px 3px #252527;
+    -webkit-box-shadow: 2px 2px 3px #252527;
+    margin-top: 5px;
+}
+input[type=text]{   
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    box-shadow: 1px 1px 2px #333333;    
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    border:1px solid #000000;
+    text-align: center;
+}
+.gradient {
+    background-image:
+    linear-gradient(to top , 
+      #E8E8E8, #CFCFCF, #B5B5B5);
+}
+.gradient1{
+    background-image:
+    /*linear-gradient(to top , 
+       #00438E, #1483FF, #00438E);*/
+       linear-gradient(to right , 
+       #005cc4, #5fabfe);
+}
+.tm{
+    height: 148px;
+    font-size: 90px;
+}
+.tm1{
+    height: 60px;
+    font-size: 50px;
+}
+.jumbotron{
+    text-align: left;
+}
+.jumbo2{
+   /* background: #1EB3D2 ;*/
+   background-color: #d1e7fe;
+    height: 950px;
+}
+#textsd {
+    text-shadow:4px 4px 10px gray;
+}
+.panel-size{
+    height: 515px;
+    overflow: auto;
+
+}
+.header-img{
+    padding-top: 10px;
+    height: 130px;
+}
+.panel-heading{
+    font-size: 1.6em;
+}
+.rounded{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+.img-center{
+    text-align: center;
+}
